@@ -1,0 +1,213 @@
+:root {
+    --bg: rgb(239, 243, 242);
+    --black: #2c2929;
+    --grey: #aaa9a9;       
+    --lightblue: #349fc0;    
+    --blue: #066da8;    
+    --lightgreen: #23cf6b;
+    --white: #ffffff; 
+}
+
+* {
+    box-sizing: border-box;    
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+/* ----- HEADER ----- */
+header {    
+    display: grid;
+    grid-template-columns: auto auto auto;    
+    align-content: center;
+    padding: 15px;
+    background-color: var(--bg);
+}
+
+.header-logo { 
+    justify-self: right;  
+    align-self: center;
+    padding: 10px;
+}
+.logo {
+    width: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-logo-nombre {
+    align-self: center;
+    text-align: start;    
+}
+
+.logo-nombre {
+    font-family:'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
+    color: var(--black);
+}
+
+.header-search {
+    justify-self: right;
+    align-self: center;
+}
+
+.search-input{
+    width: 400px;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: var(--white);
+    border-style: none;
+    padding-left: 40px;
+    background-image: url('/images/navsearch-lupa2.png');
+    background-position: 3px;
+    background-repeat: no-repeat;
+        
+}
+.input-search:focus{
+    outline: none;
+}
+
+/* ----- MENU ----- */
+
+.menu-buttons-container {
+    display: flex;
+    justify-content: center;
+    background-color: var(--blue);
+    border-radius: 6px; 
+    margin-bottom: 20px;
+    box-shadow: 4px 5px 5px var(--lightblue);   
+}
+
+.menu-button {
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 16px;
+    font-size: 14px;
+    border: none;
+}
+
+.menu-button:hover{
+    background-color: var(--lightblue);
+    border:none;
+    cursor: pointer;
+    display:block;
+}
+
+/* ----- SECTION ----- */
+.section-home-image {
+    background-image: url("/images/home-image-small.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+@media only screen and (min-width: 600px) {
+    .section-home-image { 
+       background-image: url("/images/home-image.jpg"); 
+    }
+  }
+
+
+ .section-carrito {
+    display: grid;
+    grid-template-columns: auto auto;    
+    align-content: center;
+    padding: 15px;
+ }
+
+ .carrito {
+    justify-self: right;
+    padding: 10px;
+ }
+
+.carrito-image {
+    width: 40px; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.carrito-texto {
+    align-self: center;
+    text-align: start; 
+}
+
+/* ----- MAIN ----- */
+
+.main-container {    
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;    
+    gap: 20px;
+    justify-content: center;
+    margin: 50px;
+    padding: 20px;
+}
+
+.div-card {
+    display: flexbox;
+    text-align: center;
+    background-color: var(--white);         
+    border: 2px solid var(--grey);
+    width: 300px;
+    height: 400px;
+}
+
+.div-card:hover {
+    transition: .5s ease-in;
+    box-shadow: 10px 6px 6px var(--grey);
+}
+
+.producto-imagen {
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.producto-nombre {
+    font-size: large;
+    margin-top: 10px; 
+}
+
+.producto-importe {
+    font-family: monospace;
+    font-weight: 600;
+    color: var(--lightgreen);
+    background-color: var(--white);
+}
+
+.producto-btnagregar {
+    margin-top: 50px;    
+}
+
+.btnagregar {
+    background-color: var(--lightblue);
+    color: var(--white);
+    padding: 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+}
+.btnagregar:hover{
+    background-color: var(--lightgreen);
+    border:none;
+    cursor: pointer;    
+}
+
+/* ----- FOOTER ----- */
+
+footer {
+    background-color: var(--blue); 
+    padding: 10px;
+}
+
+.footer-text {
+    background-color: var(--blue);  
+    color: var(--white); 
+}
