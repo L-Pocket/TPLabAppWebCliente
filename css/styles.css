@@ -99,7 +99,7 @@ header {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    height: 300px;
+    height: 250px;
     display: block;
     margin-left: auto;
     margin-right: auto;    
@@ -150,21 +150,25 @@ header {
 }
 
 .div-card {
-    display: flexbox;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    justify-content: center;
     background-color: var(--white);         
     border: 2px solid var(--grey);
     width: 300px;
     height: 400px;
+    overflow: hidden;
+    transition: .3s ease;
 }
 
 .div-card:hover {
-    transition: .5s ease-in;
     box-shadow: 10px 6px 6px var(--grey);
 }
 
 .producto-imagen {
-    height: 200px;
+    height: 100px;
+    width: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;    
@@ -172,14 +176,22 @@ header {
 
 .producto-nombre {
     font-size: large;
+    overflow: hidden;
+    white-space: nowrap;
     margin-top: 10px; 
 }
 
 .producto-importe {
+    border-radius: 20px;
+    margin: 0 auto;
+    padding: 10px;
     font-family: monospace;
     font-weight: 600;
     color: var(--lightgreen);
     background-color: var(--white);
+}
+.producto-importe p {
+    margin: 5px;
 }
 
 .producto-btnagregar {
@@ -188,13 +200,14 @@ header {
 
 .btnagregar {
     background-color: var(--lightblue);
-    color: var(--white);
+    color: var(--white); 
     padding: 16px;
     font-size: 14px;
     border: none;
     border-radius: 5px;
 }
 .btnagregar:hover{
+    transition: 0.2s ease-in-out;
     background-color: var(--lightgreen);
     border:none;
     cursor: pointer;    

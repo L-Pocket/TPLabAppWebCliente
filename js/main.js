@@ -1,14 +1,15 @@
 const divContenedor = document.querySelector("div#container")
-const URL = "js/prendas.json"
+const URL = "https://fakestoreapi.com/products"
 const carrito = []
+const arrayProductos = []
 
 // Template Literal ${}
 function crearCardHTML(producto) {
     return  `<div class="div-card">
-            <div class="producto-imagen">${producto.imagen}<h1></h1></div>
-            <div class="producto-nombre"><p>${producto.nombre}</p></div>
-            <div class="producto-importe"><p>$ ${producto.importe}</p></div>
-            <div class="producto-btnagregar"><button id="${producto.codigo}" class="btnagregar">AGREGAR</button></div>
+                <div class="producto-imagen"><image src="${producto.image}" alt="Imagen de producto"></image></div>
+                <div class="producto-nombre"><p>${producto.title}</p></div>
+                <div class="producto-importe"><p>$ ${producto.price}</p></div>
+                <div class="producto-btnagregar"><button id="${producto.id}" class="btnagregar">AGREGAR</button></div>
             </div>`
 }
 
@@ -24,7 +25,7 @@ function activarClickEnBotones() {
     botonesAgregar.forEach((boton)=> {
         boton.addEventListener("click", ()=> {
             //alert('Hiciste click en el botón. Id: '+ boton.id)
-            const productoSeleccionado = arrayProductos.find((producto) => producto.codigo === parseInt(boton.id))
+            const productoSeleccionado = arrayProductos.find((producto) => producto.id === parseInt(boton.id))
             //console.log(productoSeleccionado)
             carrito.push(productoSeleccionado)
             //console.table(carrito)
@@ -40,7 +41,11 @@ function cargarProductos() {
 
 fetch(URL)
 .then((response) => response.json())
-//.then((data) => console.table(data))
-.then((data) => arrayProductos.push(...data))
-.then(() => cargarProductos())
+.then((data) => {
+    arrayProductos.push(...data)
+    cargarProductos()
+})
+.catch((error) => {
+    console.error('Error al obtener los productos:', error)
+})
 
