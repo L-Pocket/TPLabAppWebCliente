@@ -45,27 +45,6 @@ header {
     color: var(--black);
 }
 
-.header-search {
-    justify-self: right;
-    align-self: center;
-}
-
-.search-input{
-    width: 400px;
-    font-size: 12px;
-    padding: 10px;
-    border-radius: 15px;
-    background-color: var(--white);
-    border-style: none;
-    padding-left: 40px;
-    background-image: url('/images/navsearch-lupa2.png');
-    background-position: 3px;
-    background-repeat: no-repeat;
-        
-}
-.input-search:focus{
-    outline: none;
-}
 
 /* ----- MENU ----- */
 
@@ -136,7 +115,43 @@ header {
     text-align: start; 
 }
 
+.search {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    justify-self: right;
+    align-self: center;
+}
+
+.search-input {
+    width: 400px;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: var(--white);
+    border-style: none;
+    padding-left: 40px;
+    background-image: url('/images/navsearch-lupa2.png');
+    background-position: 3px;
+    background-repeat: no-repeat;
+    outline: 1px solid rgb(170, 170, 170);
+}
+
+.search-input:focus, 
+.search-input:active, 
+.search-input:hover {
+    outline: 1px solid rgb(82, 82, 82);
+}
+
 /* ----- MAIN ----- */
+
+#div-ordenar-productos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 25px;
+}
 
 .main-container {    
     display: flex;
@@ -147,6 +162,7 @@ header {
     justify-content: center;
     margin: 50px;
     padding: 20px;
+    margin-top: 40px;
 }
 
 .div-card {
@@ -223,4 +239,16 @@ footer {
 .footer-text {
     background-color: var(--blue);  
     color: var(--white); 
+}
+
+#btn-carrito {
+    display: none;
+}    
+
+#ocultar-carrito {
+    display: none;
+}    
+
+#container-carrito {
+    display: none;
 }

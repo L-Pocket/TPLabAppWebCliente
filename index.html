@@ -6,8 +6,6 @@
     <title>Mi Tienda</title>
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="css/styles.css">
-    <script defer src="js/main.js"></script>
-    <script src="js/hardcoded.js"></script>
 </head>
 <body>
     <header>
@@ -18,10 +16,17 @@
             <h1 class="logo-nombre">Mi Tienda Ejemplo</h1>
         </div>
         
-        <div class="header-search">
-            <input type="text" class="search-input" placeholder="Buscá productos, marcas, categorías y más...
-            " maxlength="120" autocapitalize="off">
-        </div>     
+        <div class="section-carrito">        
+            <div class="carrito">
+                <img class="carrito-image" src="images/shopping-cart.png" alt="shopping cart">
+            </div>
+            <div>
+                <p class="carrito-texto">Productos en el Carrito: <span id="spanContadorCarrito">0</span></p>
+                <button id="btn-carrito">Ver carrito</button>    
+                <button id="ocultar-carrito">Ocultar carrito</button>    
+                <div id="container-carrito"></div>    
+            </div>
+        </section>
     </header>
     <nav>
         <div class="menu-buttons-container">
@@ -32,17 +37,19 @@
             <button class="menu-button">FAQs</button>
         </div>        
     </nav>
-
+    
     <section class="section-home-image"></section>
-
-    <section class="section-carrito">        
-        <div class="carrito">
-            <img class="carrito-image" src="images/shopping-cart.png" alt="shopping cart">
-        </div>
-        <p class="carrito-texto">Productos en el Carrito: <span id="spanContadorCarrito">0</span></p>        
-    </section>
+    
+    <div class="search">
+        <input type="text" id="filtro-input" class="search-input" placeholder="Buscá nuestros productos por nombre..." maxlength="120" autocapitalize="off">
+    </div>     
 
     <main>        
+        <div id="div-ordenar-productos">
+            <button id="btn-ordenar-baratos" class="menu-button">Ordenar por mas barato</button>
+            <button id="btn-ordenar-caros" class="menu-button">Ordenar por mas caro</button>
+        </div>
+
         <div class="main-container" id="container">            
 
         </div> 
@@ -52,5 +59,7 @@
         <p class="footer-text">©Copyright 2024</p>
     </footer>
     
+    <script defer src="js/main.js"></script>
+    <script src="js/hardcoded.js"></script>
 </body>
 </html>
