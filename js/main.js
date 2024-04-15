@@ -3,6 +3,13 @@ const URL = "https://fakestoreapi.com/products"
 const carrito = []
 const arrayProductos = []
 
+function cargarCarrito() {
+    const carritoLS = JSON.parse(localStorage.getItem('carrito')) || [];
+    
+    carritoLS.forEach(e => carrito.push(e))
+    actualizarProdsEnCarrito()
+}
+
 // Template Literal ${}
 function crearCardHTML(producto) {
     return  `<div class="div-card">
@@ -15,6 +22,18 @@ function crearCardHTML(producto) {
 
 function retornarError() {
     return  `<h2> No se encontraron productos... </h2>`
+}
+
+// ALERTA CUSTOM
+
+function abrirAlerta(mensaje = 'Haz agregado un elemento al carrito!!!') {
+    document.getElementById('alerta').style.display = 'block'
+    document.getElementById('mensaje-alerta').innerText = mensaje
+    setTimeout(() => cerrarAlerta(), 500)
+}
+
+function cerrarAlerta() {
+    document.getElementById('alerta').style.display = 'none'
 }
 
 // CARRITO
@@ -40,15 +59,19 @@ function actualizarProdsEnCarrito() {
                                         <p>${producto.title} - $ ${producto.price}</p>
                                       </div>`
     })
+
+    persistirCarrito()
 }
 
 const btnCarrito = document.querySelector("#btn-carrito")
 const btnOcultarCarrito = document.querySelector("#ocultar-carrito");
+const btnVaciarCarrito = document.querySelector("#vaciar-carrito")
 
 function mostrarCarrito() {    
     const carritoContainer = document.getElementById("container-carrito")
     carritoContainer.innerHTML = ""
 
+    // podrian tener una funcion que sea crear objeto asi no ensucian esta parte, le pasas el titulo y precio y te devuelve el objto HMTL
     if (carrito.length > 0) {
         carrito.forEach((producto) => {
             carritoContainer.innerHTML += `<div class="carrito-item">
@@ -70,7 +93,9 @@ btnOcultarCarrito.addEventListener("click", function() {
     const carritoContainer = document.getElementById("container-carrito")
     carritoContainer.style.display = "none"
     btnOcultarCarrito.style.display = "none"
+    btnCarrito.style.display = "block"
 })
+btnVaciarCarrito.addEventListener("click", limpiarCarrito)
 
 function activarClickEnBotones() {
     const botonesAgregar = document.querySelectorAll('button.btnagregar')
@@ -78,9 +103,10 @@ function activarClickEnBotones() {
     botonesAgregar.forEach((boton)=> {
         boton.addEventListener("click", ()=> {
             //alert('Hiciste click en el botón. Id: '+ boton.id)
-            const productoSeleccionado = arrayProductos.find((producto) => producto.id === parseInt(boton.id))
+            const productoSeleccionado = arrayProductos.find((producto) => producto.id == boton.id)
             //console.log(productoSeleccionado)
             carrito.push(productoSeleccionado)
+            abrirAlerta(`Haz agregado correctamente tu ${productoSeleccionado.title}!!`)
             //console.table(carrito)
             actualizarProdsEnCarrito()
         })
@@ -149,8 +175,20 @@ function ordenarProductosPorPrecio(orden) {
     cargarProductos(productosOrdenados)
 }
 
+function persistirCarrito() {
+    localStorage.setItem("carrito", JSON.stringify(carrito) || [])
+}
+
+function limpiarCarrito() {
+    carrito.length = 0
+    actualizarProdsEnCarrito()
+    abrirAlerta("el carrito fue vaciado con exito!")
+}
+
 const btnOrdenarBaratos = document.getElementById("btn-ordenar-baratos")
 const btnOrdenarCaros = document.getElementById("btn-ordenar-caros")
 
 btnOrdenarBaratos.addEventListener("click", () => ordenarProductosPorPrecio('ascendente'))
 btnOrdenarCaros.addEventListener("click", () => ordenarProductosPorPrecio('descendente'))
+
+cargarCarrito()

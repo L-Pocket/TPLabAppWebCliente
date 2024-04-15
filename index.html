@@ -24,6 +24,7 @@
                 <p class="carrito-texto">Productos en el Carrito: <span id="spanContadorCarrito">0</span></p>
                 <button id="btn-carrito">Ver carrito</button>    
                 <button id="ocultar-carrito">Ocultar carrito</button>    
+                <button id="vaciar-carrito">Vaciar carrito</button>    
                 <div id="container-carrito"></div>    
             </div>
         </section>
@@ -58,7 +59,12 @@
     <footer>
         <p class="footer-text">©Copyright 2024</p>
     </footer>
-    
+
+    <div id="alerta" class="alerta">
+        <span class="cerrar" onclick="cerrarAlerta()">&times;</span>
+        <h1 id="mensaje-alerta">Haz agregado un elemento al carrito</h1>
+    </div>
+
     <script defer src="js/main.js"></script>
     <script src="js/hardcoded.js"></script>
 </body>

@@ -90,7 +90,7 @@ header {
     }
   }
 
-
+/* ----- CARRITO -----*/
  .section-carrito {
     display: grid;
     grid-template-columns: auto auto;    
@@ -98,6 +98,41 @@ header {
     padding: 15px;
  }
 
+ #container-carrito {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 3px solid var(--lightblue);
+    border-radius: 15px;
+    padding: 10px;
+    z-index: 1000;
+    max-height: 200px; /* Ajusta la altura máxima del carrito según sea necesario */
+    overflow-y: auto;
+    scrollbar-width: thin; /* Ancho del scrollbar */
+    scrollbar-color: #ccc transparent; /* Color del scrollbar */
+}
+
+#container-carrito::-webkit-scrollbar {
+    width: 8px; /* Ancho del scrollbar en navegadores WebKit */
+}
+
+#container-carrito::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Color del pulgar del scrollbar */
+    border-radius: 4px; /* Radio de borde del pulgar del scrollbar */
+}
+
+#container-carrito::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa; /* Color del pulgar del scrollbar al pasar el mouse sobre él */
+}
+
+.carrito-item {
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+.carrito-item:last-child {
+    border-bottom: none;
+}
  .carrito {
     justify-self: right;
     padding: 10px;
@@ -252,3 +287,28 @@ footer {
 #container-carrito {
     display: none;
 }
+
+.alerta {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f44336;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.alerta .cerrar {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
