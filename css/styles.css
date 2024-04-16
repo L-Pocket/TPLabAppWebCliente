@@ -14,6 +14,27 @@
     
 }
 
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--bg);
+}
+
+button {
+    border-radius: 15px;
+    font-size: 15px;
+    padding: 5px;
+    transition: 0.3s;
+    transform: translateY(5px);
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
 /* ----- HEADER ----- */
 header {    
     display: grid;
@@ -53,8 +74,10 @@ header {
     justify-content: center;
     background-color: var(--blue);
     border-radius: 6px; 
+    padding-bottom: 7px;
     margin-bottom: 20px;
     box-shadow: 4px 5px 5px var(--lightblue);   
+    gap: 50px;
 }
 
 .menu-button {
@@ -98,31 +121,85 @@ header {
     padding: 15px;
  }
 
- #container-carrito {
+ #btns-carrito {
+    display: flex;
+    gap: 8px;
+ }
+
+#container-carrito::-webkit-scrollbar {
+    width: 8px; 
+}
+
+#container-carrito::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px; 
+}
+
+#container-carrito::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa; 
+}
+
+#container-all-carrito {
     display: none;
     position: absolute;
     background-color: white;
     border: 3px solid var(--lightblue);
     border-radius: 15px;
+    margin-top: 1rem;
     padding: 10px;
     z-index: 1000;
-    max-height: 200px; /* Ajusta la altura máxima del carrito según sea necesario */
+    width: 300px;
+    max-height: 500px; 
     overflow-y: auto;
-    scrollbar-width: thin; /* Ancho del scrollbar */
-    scrollbar-color: #ccc transparent; /* Color del scrollbar */
+    scrollbar-width: thin; 
+    scrollbar-color: #ccc transparent; 
+    transition: 0.3s ease-in-out;
 }
 
-#container-carrito::-webkit-scrollbar {
-    width: 8px; /* Ancho del scrollbar en navegadores WebKit */
+@media (max-width: 1600px) {
+    .section-carrito {
+        margin-right: 5rem;
+    }
 }
 
-#container-carrito::-webkit-scrollbar-thumb {
-    background-color: #ccc; /* Color del pulgar del scrollbar */
-    border-radius: 4px; /* Radio de borde del pulgar del scrollbar */
+@media (max-width: 1200px) {
+    .section-carrito {
+        margin-right: 8rem;
+    }
 }
 
-#container-carrito::-webkit-scrollbar-thumb:hover {
-    background-color: #aaa; /* Color del pulgar del scrollbar al pasar el mouse sobre él */
+@media (max-width: 900px) {
+    .section-carrito {
+        margin-right: 5rem;
+    }
+    #container-all-carrito {
+        width: 200px;
+    }
+}
+
+@media (max-width: 650px) {
+    h1 {
+        font-size: 20px;
+    }
+    .section-carrito {
+        margin-right: 6rem;
+    }
+    #container-all-carrito {
+        width: 150px;
+    }
+    #btns-carrito {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+#vaciar-carrito {
+    display: none;
+    background-color: rgba(255, 3, 3, 0.26);
+}
+
+#realizar-compra {
+    font-size: 18px;
 }
 
 .carrito-item {
@@ -238,7 +315,7 @@ header {
     padding: 10px;
     font-family: monospace;
     font-weight: 600;
-    color: var(--lightgreen);
+    color: var(--black);
     background-color: var(--white);
 }
 .producto-importe p {
@@ -259,7 +336,7 @@ header {
 }
 .btnagregar:hover{
     transition: 0.2s ease-in-out;
-    background-color: var(--lightgreen);
+    background-color: var(--black);
     border:none;
     cursor: pointer;    
 }
@@ -268,6 +345,9 @@ header {
 
 footer {
     background-color: var(--blue); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
 }
 

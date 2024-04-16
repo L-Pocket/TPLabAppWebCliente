@@ -5,7 +5,7 @@ const arrayProductos = []
 
 function cargarCarrito() {
     const carritoLS = JSON.parse(localStorage.getItem('carrito')) || [];
-    
+
     carritoLS.forEach(e => carrito.push(e))
     actualizarProdsEnCarrito()
 }
@@ -26,10 +26,10 @@ function retornarError() {
 
 // ALERTA CUSTOM
 
-function abrirAlerta(mensaje = 'Haz agregado un elemento al carrito!!!') {
+function abrirAlerta(mensaje = '¡Haz agregado un producto al carrito!') {
     document.getElementById('alerta').style.display = 'block'
     document.getElementById('mensaje-alerta').innerText = mensaje
-    setTimeout(() => cerrarAlerta(), 500)
+    setTimeout(() => cerrarAlerta(), 1000)
 }
 
 function cerrarAlerta() {
@@ -37,6 +37,7 @@ function cerrarAlerta() {
 }
 
 // CARRITO
+const carritoContainer = document.getElementById("container-carrito")
 
 function actualizarProdsEnCarrito() {
     const spanCarrito = document.querySelector('span#spanContadorCarrito')
@@ -51,7 +52,11 @@ function actualizarProdsEnCarrito() {
         btnOcultarCarrito.style.display = "none"
     }
 
-    const carritoContainer = document.getElementById("container-carrito")
+    if (carritoContainer.style.display === 'block') {
+        const btnCarrito = document.querySelector("#btn-carrito")
+        btnCarrito.style.display = "none"
+    }
+
     carritoContainer.innerHTML = ""
     
     carrito.forEach((producto) => {
@@ -66,12 +71,13 @@ function actualizarProdsEnCarrito() {
 const btnCarrito = document.querySelector("#btn-carrito")
 const btnOcultarCarrito = document.querySelector("#ocultar-carrito");
 const btnVaciarCarrito = document.querySelector("#vaciar-carrito")
+const allCarritoContainer = document.getElementById("container-all-carrito")
 
 function mostrarCarrito() {    
     const carritoContainer = document.getElementById("container-carrito")
     carritoContainer.innerHTML = ""
 
-    // podrian tener una funcion que sea crear objeto asi no ensucian esta parte, le pasas el titulo y precio y te devuelve el objto HMTL
+    
     if (carrito.length > 0) {
         carrito.forEach((producto) => {
             carritoContainer.innerHTML += `<div class="carrito-item">
@@ -79,21 +85,27 @@ function mostrarCarrito() {
                                           </div>`
         })
         carritoContainer.style.display = "block"
+        allCarritoContainer.style.display = "block"
         btnOcultarCarrito.style.display = "block"
         btnCarrito.style.display = "none"
+        btnVaciarCarrito.style.display = 'block'
     } else {
         carritoContainer.innerHTML = "<p>No hay productos en el carrito.</p>"
+        allCarritoContainer.style.display = "none"
         carritoContainer.style.display = "block"
         btnOcultarCarrito.style.display = "none"
         btnCarrito.style.display = "block"
+        btnVaciarCarrito.style.display = 'none'
     }
 }
 btnCarrito.addEventListener("click", mostrarCarrito)
 btnOcultarCarrito.addEventListener("click", function() {
     const carritoContainer = document.getElementById("container-carrito")
     carritoContainer.style.display = "none"
+    allCarritoContainer.style.display = "none"
     btnOcultarCarrito.style.display = "none"
     btnCarrito.style.display = "block"
+    btnVaciarCarrito.style.display = 'none'
 })
 btnVaciarCarrito.addEventListener("click", limpiarCarrito)
 
@@ -106,7 +118,7 @@ function activarClickEnBotones() {
             const productoSeleccionado = arrayProductos.find((producto) => producto.id == boton.id)
             //console.log(productoSeleccionado)
             carrito.push(productoSeleccionado)
-            abrirAlerta(`Haz agregado correctamente tu ${productoSeleccionado.title}!!`)
+            abrirAlerta(`¡Haz agregado correctamente tu ${productoSeleccionado.title} al carrito!`)
             //console.table(carrito)
             actualizarProdsEnCarrito()
         })
@@ -179,12 +191,6 @@ function persistirCarrito() {
     localStorage.setItem("carrito", JSON.stringify(carrito) || [])
 }
 
-function limpiarCarrito() {
-    carrito.length = 0
-    actualizarProdsEnCarrito()
-    abrirAlerta("el carrito fue vaciado con exito!")
-}
-
 const btnOrdenarBaratos = document.getElementById("btn-ordenar-baratos")
 const btnOrdenarCaros = document.getElementById("btn-ordenar-caros")
 
@@ -192,3 +198,32 @@ btnOrdenarBaratos.addEventListener("click", () => ordenarProductosPorPrecio('asc
 btnOrdenarCaros.addEventListener("click", () => ordenarProductosPorPrecio('descendente'))
 
 cargarCarrito()
+
+// Limpiar carrito y realizar compra
+
+function limpiarCarrito() {
+    carrito.length = 0
+    actualizarProdsEnCarrito()
+    btnVaciarCarrito.style.display = 'none'
+    carritoContainer.style.display = 'none'
+    allCarritoContainer.style.display = 'none'
+    abrirAlerta("¡El carrito fue vaciado con exito!")
+}
+
+const btnRealizarCompra = document.getElementById('realizar-compra')
+
+function realizarCompra() {
+    carrito.length = 0
+    actualizarProdsEnCarrito()
+    btnVaciarCarrito.style.display = 'none'
+    carritoContainer.style.display = 'none'
+    allCarritoContainer.style.display = 'none'
+    abrirAlerta("¡Compra realizada con exito!")
+}
+btnRealizarCompra.addEventListener('click', realizarCompra)
+
+const btnInicio = document.getElementById('menu-inicio')
+btnInicio.addEventListener('click', function(e) {
+    e.preventDefault()
+    window.location.href = ''
+} )

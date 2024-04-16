@@ -13,7 +13,7 @@
             <img class="logo"src="/images/logo.png" alt="Logo">
         </div>
         <div class="header-logo-nombre">
-            <h1 class="logo-nombre">Mi Tienda Ejemplo</h1>
+            <h1 class="logo-nombre">Tienda ModaStyle</h1>
         </div>
         
         <div class="section-carrito">        
@@ -21,21 +21,23 @@
                 <img class="carrito-image" src="images/shopping-cart.png" alt="shopping cart">
             </div>
             <div>
-                <p class="carrito-texto">Productos en el Carrito: <span id="spanContadorCarrito">0</span></p>
-                <button id="btn-carrito">Ver carrito</button>    
-                <button id="ocultar-carrito">Ocultar carrito</button>    
-                <button id="vaciar-carrito">Vaciar carrito</button>    
-                <div id="container-carrito"></div>    
+                <p class="carrito-texto">Carrito (<span id="spanContadorCarrito">0</span>)</p>
+                <button id="btn-carrito" class="menu-button">Ver carrito</button>    
+                <button id="ocultar-carrito" class="menu-button">Ocultar carrito</button>    
+                <div id="container-all-carrito">
+                    <div id="container-carrito"></div>  
+                    <div id="btns-carrito">
+                        <button id="realizar-compra" class="menu-button">Realizar Compra</button>   
+                        <button id="vaciar-carrito" class="menu-button">Vaciar carrito</button>   
+                    </div>  
+                </div>
             </div>
         </section>
     </header>
     <nav>
         <div class="menu-buttons-container">
-            <button class="menu-button">Coleccion 24</button>
-            <button class="menu-button">Accesorios</button>
-            <button class="menu-button">Denim</button>
-            <button class="menu-button">Outlet</button>
-            <button class="menu-button">FAQs</button>
+            <button id="menu-inicio" class="menu-button">Inicio</button>
+            <button id="menu-productos" class="menu-button"><a href="#container">Productos</a></button>
         </div>        
     </nav>
     
@@ -57,7 +59,7 @@
     </main>
 
     <footer>
-        <p class="footer-text">©Copyright 2024</p>
+        <p class="footer-text">©Copyright 2024 - Laboratorio Aplicaciones Web Cliente</p>
     </footer>
 
     <div id="alerta" class="alerta">
@@ -66,6 +68,5 @@
     </div>
 
     <script defer src="js/main.js"></script>
-    <script src="js/hardcoded.js"></script>
 </body>
 </html>
