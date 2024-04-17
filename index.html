@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="header-logo">
-            <img class="logo"src="/images/logo.png" alt="Logo">
+            <img class="logo" src="/images/logo.png" alt="Logo" title="Logo imagen">            
         </div>
         <div class="header-logo-nombre">
             <h1 class="logo-nombre">Tienda ModaStyle</h1>
@@ -18,39 +18,42 @@
         
         <div class="section-carrito">        
             <div class="carrito">
-                <img class="carrito-image" src="images/shopping-cart.png" alt="shopping cart">
-            </div>
-            <div>
-                <p class="carrito-texto">Carrito (<span id="spanContadorCarrito">0</span>)</p>
-                <button id="btn-carrito" class="menu-button">Ver carrito</button>    
-                <button id="ocultar-carrito" class="menu-button">Ocultar carrito</button>    
+                <button id="btn-carrito" class="carrito-button" title="Ver carrito">
+                    <img class="carrito-image" src="images/shopping-cart.png" alt="shopping cart">                    
+                </button>                     
+                <button id="ocultar-carrito" class="carrito-button">Ocultar carrito</button> 
+            </div>             
+            <div class="carrito-contador">                
+                <p class="carrito-contador-texto">Carrito (<span id="spanContadorCarrito">0</span>)</p>                                                 
                 <div id="container-all-carrito">
                     <div id="container-carrito"></div>  
                     <div id="btns-carrito">
                         <button id="realizar-compra" class="menu-button">Realizar Compra</button>   
-                        <button id="vaciar-carrito" class="menu-button">Vaciar carrito</button>   
-                    </div>  
-                </div>
+                        <button id="vaciar-carrito" class="menu-button">Vaciar carrito</button> 
+                    <div>  
+                </div>  
             </div>
+        </div>
+
         </section>
     </header>
     <nav>
         <div class="menu-buttons-container">
-            <button id="menu-inicio" class="menu-button">Inicio</button>
-            <button id="menu-productos" class="menu-button"><a href="#container">Productos</a></button>
+            <button id="menu-inicio" class="menu-button" title="Volver al Inicio">Inicio</button>
+            <button id="menu-productos" class="menu-button"><a href="#container" title="Ver productos">Productos</a></button>
         </div>        
     </nav>
     
-    <section class="section-home-image"></section>
+    <section class="section-home-image" title="Imagen Homepage"></section>
     
-    <div class="search">
-        <input type="text" id="filtro-input" class="search-input" placeholder="Buscá nuestros productos por nombre..." maxlength="120" autocapitalize="off">
-    </div>     
+    <section class="search">
+        <input type="text" id="filtro-input" class="search-input" title="Buscador" placeholder="Buscá nuestros productos por nombre..." maxlength="120" autocapitalize="off">
+    </section>     
 
     <main>        
         <div id="div-ordenar-productos">
-            <button id="btn-ordenar-baratos" class="menu-button">Ordenar por mas barato</button>
-            <button id="btn-ordenar-caros" class="menu-button">Ordenar por mas caro</button>
+            <button id="btn-ordenar-baratos" class="order-button">Ordenar por mas barato</button>
+            <button id="btn-ordenar-caros" class="order-button">Ordenar por mas caro</button>
         </div>
 
         <div class="main-container" id="container">            

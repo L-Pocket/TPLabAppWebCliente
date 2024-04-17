@@ -2,10 +2,11 @@
     --bg: rgb(239, 243, 242);
     --black: #2c2929;
     --grey: #aaa9a9;       
-    --lightblue: #349fc0;    
+    --lightblue: #43bce0;    
     --blue: #066da8;    
-    --lightgreen: #23cf6b;
-    --white: #ffffff; 
+    --lightgreen: #45e4c9;
+    --white: #ffffff;
+    --red: rgba(253, 3, 3, 0.5);
 }
 
 * {
@@ -15,26 +16,13 @@
 }
 
 a {
+    color: var(--bg);
     text-decoration: none;
 }
 
-a:visited {
+a:visited {    
     color: var(--bg);
 }
-
-button {
-    border-radius: 15px;
-    font-size: 15px;
-    padding: 5px;
-    transition: 0.3s;
-    transform: translateY(5px);
-}
-
-button:hover {
-    cursor: pointer;
-    opacity: 0.9;
-}
-
 /* ----- HEADER ----- */
 header {    
     display: grid;
@@ -66,83 +54,52 @@ header {
     color: var(--black);
 }
 
-
-/* ----- MENU ----- */
-
-.menu-buttons-container {
-    display: flex;
-    justify-content: center;
-    background-color: var(--blue);
-    border-radius: 6px; 
-    padding-bottom: 7px;
-    margin-bottom: 20px;
-    box-shadow: 4px 5px 5px var(--lightblue);   
-    gap: 50px;
-}
-
-.menu-button {
-    background-color: var(--blue);
-    color: var(--white);
-    padding: 16px;
-    font-size: 14px;
-    border: none;
-}
-
-.menu-button:hover{
-    background-color: var(--lightblue);
-    border:none;
-    cursor: pointer;
-    display:block;
-}
-
-/* ----- SECTION ----- */
-.section-home-image {
-    background-image: url("/images/home-image-small.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 250px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;    
-}
-
-@media only screen and (min-width: 600px) {
-    .section-home-image { 
-       background-image: url("/images/home-image.jpg"); 
-    }
-  }
-
 /* ----- CARRITO -----*/
- .section-carrito {
+.section-carrito {
     display: grid;
     grid-template-columns: auto auto;    
     align-content: center;
     padding: 15px;
- }
+}
 
- #btns-carrito {
+.carrito-button{
+    background-color: var(--lightblue);
+    color: var(--white);
+    padding: 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 50px;
+}
+
+.carrito-button:hover{
+    background-color: var(--lightgreen);
+    border:none;
+    cursor: pointer;    
+}
+
+#btns-carrito {
     display: flex;
     gap: 8px;
- }
+    cursor: pointer;  
+}
 
 #container-carrito::-webkit-scrollbar {
     width: 8px; 
 }
 
 #container-carrito::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 4px; 
+    background-color: var(--white);
+    border-radius: 4px;    
 }
 
 #container-carrito::-webkit-scrollbar-thumb:hover {
-    background-color: #aaa; 
+    background-color: var(--grey); 
 }
 
 #container-all-carrito {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: var(--white);
     border: 3px solid var(--lightblue);
     border-radius: 15px;
     margin-top: 1rem;
@@ -152,7 +109,7 @@ header {
     max-height: 500px; 
     overflow-y: auto;
     scrollbar-width: thin; 
-    scrollbar-color: #ccc transparent; 
+    scrollbar-color: var(--grey); 
     transition: 0.3s ease-in-out;
 }
 
@@ -195,7 +152,7 @@ header {
 
 #vaciar-carrito {
     display: none;
-    background-color: rgba(255, 3, 3, 0.26);
+    background-color: var(--red);
 }
 
 #realizar-compra {
@@ -203,14 +160,15 @@ header {
 }
 
 .carrito-item {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--black);
     padding: 10px;
 }
 
 .carrito-item:last-child {
     border-bottom: none;
 }
- .carrito {
+
+.carrito {
     justify-self: right;
     padding: 10px;
  }
@@ -219,22 +177,62 @@ header {
     width: 40px; 
     display: block;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;     
 }
 
-.carrito-texto {
+.carrito-contador{    
     align-self: center;
-    text-align: start; 
 }
 
-.search {
+.carrito-contador-texto {
+    font-family:'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
+    font-size: large;
+}
+
+/* ----- NAV ----- */
+
+.menu-buttons-container {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
-    justify-self: right;
-    align-self: center;
+    background-color: var(--blue);
+    border-radius: 6px;     
+    margin-bottom: 20px;
+    box-shadow: 4px 5px 5px var(--lightblue);       
 }
 
+.menu-button {
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 16px;
+    font-size: 14px;
+    border: none;
+}
+
+.menu-button:hover{
+    background-color: var(--lightblue);
+    border:none;
+    cursor: pointer;    
+}
+
+/* ----- SECTION IMAGEN ----- */
+.section-home-image {
+    background-image: url("/images/home-image-small.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+@media only screen and (min-width: 600px) {
+    .section-home-image { 
+       background-image: url("/images/home-image.jpg"); 
+    }
+  }
+
+/* ----- BUSCADOR ----- */
 .search-input {
     width: 400px;
     font-size: 12px;
@@ -246,13 +244,38 @@ header {
     background-image: url('/images/navsearch-lupa2.png');
     background-position: 3px;
     background-repeat: no-repeat;
-    outline: 1px solid rgb(170, 170, 170);
+    outline: 1px solid var(--grey);
 }
 
 .search-input:focus, 
 .search-input:active, 
 .search-input:hover {
-    outline: 1px solid rgb(82, 82, 82);
+    outline: 1px solid var(--black);
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    justify-self: right;
+    align-self: center;
+}
+
+/* ----- BOTONES ORDENAR ----- */
+.order-button {
+    border-radius: 15px;
+    font-size: 15px;    
+    transition: 0.3s;
+    transform: translateY(5px);
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 16px;    
+    border: none;
+}
+
+.order-button:hover {
+    cursor: pointer;
+    opacity: 0.9;
 }
 
 /* ----- MAIN ----- */
@@ -376,14 +399,14 @@ footer {
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--lightblue);
-    color: white;
+    color: var(--white);
     padding: 20px;
     border-radius: 10px;
 }
 
 .alerta .cerrar {
     margin-left: 15px;
-    color: white;
+    color: var(--white);
     font-weight: bold;
     float: right;
     font-size: 22px;
