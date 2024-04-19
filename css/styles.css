@@ -381,8 +381,8 @@ footer {
     color: var(--white); 
 }
 
-#btn-carrito {
-    display: none;
+button#btn-carrito[disabled]:hover {
+    background-color: var(--lightblue);
 }    
 
 #ocultar-carrito {

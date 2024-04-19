@@ -47,15 +47,17 @@ function actualizarProdsEnCarrito() {
     const btnOcultarCarrito = document.querySelector("#ocultar-carrito")
     if (carrito.length > 0) {
         btnCarrito.style.display = "block"
+        btnCarrito.disabled = false
     } else {
-        btnCarrito.style.display = "none"
+        btnCarrito.disabled = true
+        // btnCarrito.style.display = "none"
         btnOcultarCarrito.style.display = "none"
     }
 
-    if (carritoContainer.style.display === 'block') {
-        const btnCarrito = document.querySelector("#btn-carrito")
-        btnCarrito.style.display = "none"
-    }
+    // if (carritoContainer.style.display === 'block') {
+    //     const btnCarrito = document.querySelector("#btn-carrito")
+    //     // btnCarrito.style.display = "none"
+    // }
 
     carritoContainer.innerHTML = ""
     
@@ -87,7 +89,7 @@ function mostrarCarrito() {
         carritoContainer.style.display = "block"
         allCarritoContainer.style.display = "block"
         btnOcultarCarrito.style.display = "block"
-        btnCarrito.style.display = "none"
+        // btnCarrito.style.display = "none"
         btnVaciarCarrito.style.display = 'block'
     } else {
         carritoContainer.innerHTML = "<p>No hay productos en el carrito.</p>"
