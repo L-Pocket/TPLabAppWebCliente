@@ -304,7 +304,7 @@ header {
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: center;
+    /* justify-content: center;  */
     background-color: var(--white);         
     border: 2px solid var(--grey);
     width: 300px;
@@ -315,53 +315,55 @@ header {
 
 .div-card:hover {
     box-shadow: 10px 6px 6px var(--grey);
+    .producto-imagen {
+        width: auto;
+        height: 150px;
+        margin: 20px 5px 30px;
+    }
 }
 
 .producto-imagen {
-    height: 100px;
     width: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;    
+    height: 140px;
+    margin: 20px 5px 30px;
 }
 
 .producto-nombre {
-    font-size: large;
-    overflow: hidden;
-    white-space: nowrap;
-    margin-top: 10px; 
+    font-size: 15px;
+    overflow: hidden;   
+    margin-top: 5px; 
+    background-color: var(--bg);
 }
 
 .producto-importe {
-    border-radius: 20px;
-    margin: 0 auto;
-    padding: 10px;
+    background-color: var(--white);
+    color: var(--black);
+    border-radius: 15px;
+    margin: 5px auto 5px; 
+    padding: 5px;
     font-family: monospace;
     font-weight: 600;
-    color: var(--black);
-    background-color: var(--white);
 }
-.producto-importe p {
+.producto-importe p{
     margin: 5px;
-}
-
-.producto-btnagregar {
-    margin-top: 50px;    
 }
 
 .btnagregar {
     background-color: var(--lightblue);
     color: var(--white); 
+    border-radius: 5px;
+    margin-top:5px;
     padding: 16px;
     font-size: 14px;
+    font-weight: 500;
     border: none;
-    border-radius: 5px;
+    
 }
-.btnagregar:hover{
-    transition: 0.2s ease-in-out;
-    background-color: var(--black);
+.btnagregar:hover{    
+    background-color: var(--lightgreen);
     border:none;
-    cursor: pointer;    
+    cursor: pointer; 
+    transition: 0.2s ease-in-out;   
 }
 
 /* ----- FOOTER ----- */

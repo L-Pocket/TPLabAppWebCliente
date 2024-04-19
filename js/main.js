@@ -13,7 +13,7 @@ function cargarCarrito() {
 // Template Literal ${}
 function crearCardHTML(producto) {
     return  `<div class="div-card">
-                <div class="producto-imagen"><image src="${producto.image}" alt="Imagen de producto"></image></div>
+                <div ><image class="producto-imagen" src="${producto.image}" alt="Imagen de producto"></image></div>
                 <div class="producto-nombre"><p>${producto.title}</p></div>
                 <div class="producto-importe"><p>$ ${producto.price}</p></div>
                 <div class="producto-btnagregar"><button id="${producto.id}" class="btnagregar">AGREGAR</button></div>
