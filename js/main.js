@@ -10,33 +10,88 @@ function cargarCarrito() {
     actualizarProdsEnCarrito()
 }
 
-// Template Literal ${}
+// ---------- Template CARD Literal ${}
 function crearCardHTML(producto) {
     return  `<div class="div-card">
                 <div ><image class="producto-imagen" src="${producto.image}" alt="Imagen de producto"></image></div>
                 <div class="producto-nombre"><p>${producto.title}</p></div>
                 <div class="producto-importe"><p>$ ${producto.price}</p></div>
-                <div class="producto-btnagregar"><button id="${producto.id}" class="btnagregar">AGREGAR</button></div>
+                <div class="btns-orden">
+                    <div ><button id="${producto.id}" class="btn-agregar">AGREGAR 🛒</button></div>
+                    <div ><button id="${producto.id}"class="btn-modal">Ver más</button></div>
+                </div>                
             </div>`
 }
 
 function retornarError() {
-    return  `<h2> No se encontraron productos... </h2>`
+    return `<h2> No se encontraron productos... </h2>`
 }
 
-// ALERTA CUSTOM
+// ---------- CARGAR CARDS DE PRODUCTOS
+
+function cargarProductos(productos = arrayProductos) {
+    if (productos.length > 0) {
+        divContenedor.innerHTML = ""
+        productos.forEach((producto) => divContenedor.innerHTML += crearCardHTML(producto))
+        activarClickEnBotones()
+        activarClickVerMas()
+    } else {
+        divContenedor.innerHTML = retornarError()
+    }
+}
+
+fetch(URL)
+.then((response) => response.json())
+.then((data) => {
+    arrayProductos.push(...data)
+    cargarProductos()
+})
+.catch((error) => {
+    console.error('Error al obtener los productos:', error)
+})
+
+// ---------- ALERTA CUSTOM
 
 function abrirAlerta(mensaje = '¡Haz agregado un producto al carrito!') {
     document.getElementById('alerta').style.display = 'block'
     document.getElementById('mensaje-alerta').innerText = mensaje
-    setTimeout(() => cerrarAlerta(), 1000)
+    setTimeout(() => cerrarAlerta(), 2000)
 }
 
 function cerrarAlerta() {
     document.getElementById('alerta').style.display = 'none'
 }
 
-// CARRITO
+// ----------- VENTANA MODAL
+
+const btnVerMas = document.querySelector("btn-modal")
+const modal = document.querySelector("#modal-vermas")
+const span = document.getElementsByClassName("close")[0];
+
+function abrirModal() {
+    modal.style.display = "block";
+}
+function activarClickVerMas() {
+    const botonesVerMas = document.querySelectorAll("button.btn-modal")
+    // Abrir Modal con click
+    botonesVerMas.forEach((boton)=> {
+        boton.addEventListener("click", ()=> { 
+            abrirModal()      
+        })
+    })
+    // cerrar modal con X
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    // cerrar modal haciendo click en la pantalla
+    window.onclick = function(event) {
+        if (event.target == modal) {
+        modal.style.display = "none";
+        }
+    }
+}
+
+// ---------- CARRITO
 const carritoContainer = document.getElementById("container-carrito")
 
 function actualizarProdsEnCarrito() {
@@ -63,28 +118,33 @@ function actualizarProdsEnCarrito() {
     
     carrito.forEach((producto) => {
         carritoContainer.innerHTML += `<div class="carrito-item">
-                                        <p>${producto.title} - $ ${producto.price}</p>
+                                        <p>${producto.title}</p>                                        
+                                        <p class="carrito-item-precio">$ ${producto.price}</p>                                                                              
                                       </div>`
     })
 
     persistirCarrito()
 }
 
+function persistirCarrito() {
+    localStorage.setItem("carrito", JSON.stringify(carrito) || [])
+}
+
 const btnCarrito = document.querySelector("#btn-carrito")
 const btnOcultarCarrito = document.querySelector("#ocultar-carrito");
 const btnVaciarCarrito = document.querySelector("#vaciar-carrito")
-const allCarritoContainer = document.getElementById("container-all-carrito")
+const allCarritoContainer = document.querySelector("#container-all-carrito")
 
 function mostrarCarrito() {    
     const carritoContainer = document.getElementById("container-carrito")
     carritoContainer.innerHTML = ""
-
     
     if (carrito.length > 0) {
         carrito.forEach((producto) => {
             carritoContainer.innerHTML += `<div class="carrito-item">
-                                            <p>${producto.title} - $ ${producto.price}</p>
-                                          </div>`
+                                                <p>${producto.title}</p>                                        
+                                                <p class="carrito-item-precio">$ ${producto.price}</p>                                                                              
+                                            </div>`
         })
         carritoContainer.style.display = "block"
         allCarritoContainer.style.display = "block"
@@ -100,6 +160,7 @@ function mostrarCarrito() {
         btnVaciarCarrito.style.display = 'none'
     }
 }
+
 btnCarrito.addEventListener("click", mostrarCarrito)
 btnOcultarCarrito.addEventListener("click", function() {
     const carritoContainer = document.getElementById("container-carrito")
@@ -112,7 +173,7 @@ btnOcultarCarrito.addEventListener("click", function() {
 btnVaciarCarrito.addEventListener("click", limpiarCarrito)
 
 function activarClickEnBotones() {
-    const botonesAgregar = document.querySelectorAll('button.btnagregar')
+    const botonesAgregar = document.querySelectorAll('button.btn-agregar')
     
     botonesAgregar.forEach((boton)=> {
         boton.addEventListener("click", ()=> {
@@ -126,29 +187,6 @@ function activarClickEnBotones() {
         })
     })
 }
-
-// CARGAR PRODUCTOS
-
-function cargarProductos(productos = arrayProductos) {
-    if (productos.length > 0) {
-        divContenedor.innerHTML = ""
-        productos.forEach((producto) => divContenedor.innerHTML += crearCardHTML(producto))
-        activarClickEnBotones()
-    } else {
-        divContenedor.innerHTML = retornarError()
-    }
-}
-
-fetch(URL)
-.then((response) => response.json())
-.then((data) => {
-    arrayProductos.push(...data)
-    cargarProductos()
-})
-.catch((error) => {
-    console.error('Error al obtener los productos:', error)
-})
-
 
 // ORDEN Y FILTRO BÚSQUEDA
 
@@ -189,10 +227,6 @@ function ordenarProductosPorPrecio(orden) {
     cargarProductos(productosOrdenados)
 }
 
-function persistirCarrito() {
-    localStorage.setItem("carrito", JSON.stringify(carrito) || [])
-}
-
 const btnOrdenarBaratos = document.getElementById("btn-ordenar-baratos")
 const btnOrdenarCaros = document.getElementById("btn-ordenar-caros")
 
@@ -229,3 +263,5 @@ btnInicio.addEventListener('click', function(e) {
     e.preventDefault()
     window.location.href = ''
 } )
+
+

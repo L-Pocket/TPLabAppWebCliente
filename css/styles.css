@@ -5,6 +5,7 @@
     --lightblue: #43bce0;    
     --blue: #066da8;    
     --lightgreen: #45e4c9;
+    --green: #37f056;
     --white: #ffffff;
     --red: rgba(253, 3, 3, 0.5);
 }
@@ -12,7 +13,6 @@
 * {
     box-sizing: border-box;    
     font-family: Arial, Helvetica, sans-serif;
-    
 }
 
 a {
@@ -37,6 +37,7 @@ header {
     align-self: center;
     padding: 10px;
 }
+
 .logo {
     width: 60px;
     display: block;
@@ -160,17 +161,18 @@ header {
 }
 
 .carrito-item {
-    border-bottom: 1px solid var(--black);
-    padding: 10px;
+    border-bottom: 1px solid var(--black);    
+    margin: 10px;
 }
 
-.carrito-item:last-child {
-    border-bottom: none;
+.carrito-item-precio{
+    color: var(--blue);
+    font-weight: 600;    
 }
 
 .carrito {
     justify-self: right;
-    padding: 10px;
+    padding: 10px;    
  }
 
 .carrito-image {
@@ -303,8 +305,7 @@ header {
 .div-card {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    /* justify-content: center;  */
+    text-align: center;    
     background-color: var(--white);         
     border: 2px solid var(--grey);
     width: 300px;
@@ -317,8 +318,7 @@ header {
     box-shadow: 10px 6px 6px var(--grey);
     .producto-imagen {
         width: auto;
-        height: 150px;
-        margin: 20px 5px 30px;
+        height: 150px;        
     }
 }
 
@@ -348,7 +348,30 @@ header {
     margin: 5px;
 }
 
-.btnagregar {
+.btns-orden{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn-agregar {
+    background-color: var(--lightgreen);
+    color: var(--white); 
+    border-radius: 5px;
+    margin:5px;    
+    padding: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;    
+}
+.btn-agregar:hover{    
+    background-color: var(--green);
+    border:none;
+    cursor: pointer; 
+    transition: 0.2s ease-in-out;   
+}
+
+.btn-modal {
     background-color: var(--lightblue);
     color: var(--white); 
     border-radius: 5px;
@@ -356,11 +379,10 @@ header {
     padding: 16px;
     font-size: 14px;
     font-weight: 500;
-    border: none;
-    
+    border: none;    
 }
-.btnagregar:hover{    
-    background-color: var(--lightgreen);
+.btn-modal:hover{    
+    background-color: var(--blue);
     border:none;
     cursor: pointer; 
     transition: 0.2s ease-in-out;   
@@ -393,6 +415,44 @@ button#btn-carrito[disabled]:hover {
     display: none;
 }
 
+/* ----- MODAL ----- */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */    
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: var(--white);
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid var(--grey);
+    width: 50%; /* Could be more or less, depending on screen size */
+    height: 70%;    
+}  
+
+/* The Close Button */
+.close {
+    color: var(--grey);
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+} 
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ----- ALERTA ----- */
 .alerta {
     display: none;
     position: fixed;
