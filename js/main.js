@@ -66,21 +66,33 @@ function cerrarAlerta() {
 
 const btnVerMas = document.querySelector("btn-modal")
 const modal = document.querySelector("#modal-vermas")
-const span = document.getElementsByClassName("close")[0];
+const spanClose = document.getElementsByClassName("close")[0];
+const productoModal = document.querySelector('#contenedor-modal')
 
-function abrirModal() {
+function abrirModal(producto) {
     modal.style.display = "block";
+    //Estructura del Template literal
+        productoModal.innerHTML = `<div>
+                                <div ><image class="producto-imagen" src="${producto.image}" alt="Imagen de producto"></image></div>
+                                <div class="producto-nombre"><p>${producto.title}</p></div>
+                                <div class="producto-importe"><p>$ ${producto.price}</p></div>
+                                <div class="btns-orden">
+                                    <div ><button id="${producto.id}" class="btn-agregar">AGREGAR 🛒</button></div>                                        
+                                </div>                
+                            </div>`
 }
+
 function activarClickVerMas() {
     const botonesVerMas = document.querySelectorAll("button.btn-modal")
     // Abrir Modal con click
     botonesVerMas.forEach((boton)=> {
         boton.addEventListener("click", ()=> { 
-            abrirModal()      
+            const producto = arrayProductos.find((producto) => producto.id == boton.id)
+            abrirModal(producto)      
         })
     })
     // cerrar modal con X
-    span.onclick = function() {
+    spanClose.onclick = function() {
         modal.style.display = "none";
     }
     // cerrar modal haciendo click en la pantalla

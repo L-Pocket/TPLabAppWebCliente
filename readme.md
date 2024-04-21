@@ -23,6 +23,15 @@ Realizando Pruebas y Reportando Errores: Realiza pruebas exhaustivas en diferent
 Comunicándote con el Equipo: Únete a nuestras discusiones en GitHub para compartir tus ideas, sugerencias y preguntas con el equipo de desarrollo. Tu retroalimentación es fundamental para el crecimiento y la mejora continua de nuestra aplicación.
 ¡Esperamos con interés colaborar contigo para hacer de la Aplicación de Tienda de Ropa la mejor experiencia de compra posible para nuestros usuarios!
 
+## Tecnologías
+* HTML
+* CSS
+* JS
+* API
+
+## Cómo correr la aplicación
+Tener instalado LiveServer y ejecutar el index.html con esta extensión.
+
 ## Autores del Proyecto
 
 Este proyecto ha sido desarrollado por: 
