@@ -64,6 +64,7 @@ header {
     grid-template-columns: auto auto;    
     align-content: center;
     padding: 15px;
+    margin-right: 5rem;
 }
 
 .carrito-button{
@@ -117,28 +118,33 @@ header {
     transition: 0.3s ease-in-out;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1400px) {
     .section-carrito {
-        margin-right: 5rem;
+        margin-right: 9rem;
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
     .section-carrito {
-        margin-right: 8rem;
+        margin-right: 12rem;
     }
 }
 
 @media (max-width: 900px) {
-    .section-carrito {
+    /* .section-carrito {
         margin-right: 5rem;
-    }
-    #container-all-carrito {
-        width: 200px;
-    }
+    } */
+
 }
 
-@media (max-width: 650px) {
+@media (max-width: 768px) {
+    #btn-carrito img {
+        width: 25px;
+    }
+    #ocultar-carrito {
+        font-size: 12px;
+        padding: 5px;
+    }
     h1 {
         font-size: 20px;
     }
@@ -146,11 +152,17 @@ header {
         margin-right: 6rem;
     }
     #container-all-carrito {
-        width: 150px;
+        width: 160px;
     }
     #btns-carrito {
         display: flex;
         flex-direction: column;
+    }
+}
+
+@media (max-width: 450px) {
+    #container-all-carrito {
+        width: 150px;
     }
 }
 
@@ -411,6 +423,10 @@ button#btn-carrito[disabled]:hover {
 
 #ocultar-carrito {
     display: none;
+    color: var(--grey);
+    float: right;
+    font-size: 15px;
+    font-weight: bold;
 }    
 
 #container-carrito {
