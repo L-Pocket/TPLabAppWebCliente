@@ -152,7 +152,8 @@ header {
         margin-right: 6rem;
     }
     #container-all-carrito {
-        width: 160px;
+        width: 50%;
+        right: 5px;
     }
     #btns-carrito {
         display: flex;
@@ -162,7 +163,7 @@ header {
 
 @media (max-width: 450px) {
     #container-all-carrito {
-        width: 150px;
+        width: 70%;
     }
 }
 
@@ -184,6 +185,53 @@ header {
     color: var(--blue);
     font-weight: 600;    
 }
+
+.carrito-item div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.producto-info {
+    flex: 1;
+}
+
+.controles-cantidad {
+    display: flex;
+    align-items: center;
+}
+
+.boton-restar,
+.boton-sumar,
+.boton-eliminar {
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all;
+    transition-duration: 0.5s;
+}
+
+.boton-restar:hover,
+.boton-sumar:hover,
+.boton-eliminar:hover {
+    background-color: rgb(138, 138, 138);
+}
+
+.cantidad-productos {
+    font-size: 16px;
+    margin: 0 5px;
+}
+
 
 .carrito {
     justify-self: right;
